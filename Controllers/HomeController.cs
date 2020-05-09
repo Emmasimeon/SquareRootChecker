@@ -29,26 +29,33 @@ namespace SquareRootChecker.Controllers
             int NumberOne = int.Parse(FirstNumber);
             int NumberTwo = int.Parse(SecondNumber);
 
-            double SquareOne = Math.Sqrt(NumberOne);
-            double SquareTwo = Math.Sqrt(NumberTwo);
-            var message = "Welcome";
+            if (NumberOne == NumberTwo)
+            {
+                ViewBag.Error = "You can enter only two different numbers! TRY AGAIN!!";
+            } 
+            else 
+            {
+                double SquareOne = Math.Sqrt(NumberOne);
+                double SquareTwo = Math.Sqrt(NumberTwo);
+                var message = "Welcome";
 
-            if (SquareOne > SquareTwo)
-            {
-                message = $"The number {NumberOne} with Square root = {SquareOne} has a higher square root than the number {NumberTwo} with square root = {SquareTwo}";
-            } 
-            else if (SquareTwo > SquareOne)
-            {
-                message = $"The number {NumberTwo} with Square root = {SquareTwo} has a higher square root than the number {NumberOne} with square root = {SquareOne}";
-            } 
-            else if (SquareOne == SquareTwo)
-            {
-                message = $"The both numbers '{NumberOne}' and '{NumberTwo}' have the same Square Root, Please enter another number.."; 
+                if (SquareOne > SquareTwo)
+                {
+                    message = $"The number {NumberOne} with Square root = {SquareOne} has a higher square root than the number {NumberTwo} with square root = {SquareTwo}";
+                } 
+                else if (SquareTwo > SquareOne)
+                {
+                    message = $"The number {NumberTwo} with Square root = {SquareTwo} has a higher square root than the number {NumberOne} with square root = {SquareOne}";
+                } 
+                else if (SquareOne == SquareTwo)
+                {
+                    message = $"The both numbers '{NumberOne}' and '{NumberTwo}' have the same Square Root, Please enter another number.."; 
+                }
+
+                ViewBag.SquareOne = SquareOne;
+                ViewBag.SquareTwo = SquareTwo;
+                ViewBag.Message = message;
             }
-
-            ViewBag.SquareOne = SquareOne;
-            ViewBag.SquareTwo = SquareTwo;
-            ViewBag.Message = message;
 
             return View();
         }
