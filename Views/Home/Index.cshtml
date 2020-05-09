@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Square Root Checker";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Square Root Checker</h1>
+    <p>Enter two numbers to find the Square Root of the numbers and indicate the number with the largest square root.</p>
+</div>
+
+
+<div class="card mx-auto col-6">
+    <form asp-controller="Home" asp-action="Index" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="FirstNumber">First Number</label>
+                <input type="number" min="0" class="form-control" id="FirstNumber" name="FirstNumber" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="SecondNumber">Second Number</label>
+                <input type="number" min="0" class="form-control" id="SecondNumber" name="SecondNumber" required>
+            </div>
+        </div>
+        <div class="text-center p-3">
+            <button type="submit" class="btn btn-primary">Analyze</button>
+        </div>
+    </form>
+        @{
+            if (ViewBag.SquareOne != null)
+            {
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="1stNumber">Square Root of 1st Number</label>
+                        <input class="form-control" type="number" value="@ViewBag.SquareOne" disabled>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="2ndNumber">Square Root of 2nd Number</label>
+                        <input class="form-control" type="number" value="@ViewBag.SquareTwo" disabled>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group text-center col-md-12">
+                        <label for="Analysis" class=""><b>ANALYSIS</b></label>
+                        <textarea class="form-control" rows="2" placeholder="@ViewBag.message" disabled></textarea>
+                    </div>
+                </div>
+            }
+        }
+</div>
+
